@@ -1,0 +1,7 @@
+{
+	"memory": {
+		"format": "<span> </span>{}%",
+		"tooltip": false,
+		"interval": 30
+	}
+}
