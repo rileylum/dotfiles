@@ -82,6 +82,7 @@ PACMAN_PKGS=(
     gum
     uv
     pacman-contrib
+    reflector
 
     # Audio (PipeWire)
     pipewire

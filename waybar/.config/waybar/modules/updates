@@ -4,7 +4,7 @@
 		"return-type": "json",
 		"interval": 3600,
 		"exec": "~/.config/waybar/modules/updates.sh",
-		"on-click": "wezterm start --class floating-term -e sh -c 'yay -Syu; echo Done. Press enter to close.; read'",
+		"on-click": "wezterm start --class floating-term -e sh -c 'system-update; echo; echo Done. Press enter to close.; read'",
 		"tooltip": true
 	}
 }
