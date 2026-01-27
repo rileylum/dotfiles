@@ -29,10 +29,21 @@ window#waybar {
 	margin: 10px 10px 5px 0px;
 }
 
-#workspaces, #clock, #custom-weather, #cpu, #memory, #custom-temp, #pulseaudio {
+#workspaces, #clock, #custom-weather, #cpu, #memory, #custom-temp, #pulseaudio, #custom-updates {
 	margin: 0px 6px 0px 10px;
 	min-width: 25px;
 	color: @subtext0;
+}
+
+#custom-updates.has-updates {
+	color: @peach;
+}
+
+#custom-updates.updated {
+	color: transparent;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
 }
 
 #workspaces button {

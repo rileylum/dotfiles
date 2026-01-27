@@ -1,0 +1,10 @@
+{
+	"custom/updates": {
+		"format": "󰏔 {}",
+		"return-type": "json",
+		"interval": 3600,
+		"exec": "~/.config/waybar/modules/updates.sh",
+		"on-click": "wezterm -e sh -c 'yay -Syu; echo Done. Press enter to close.; read'",
+		"tooltip": true
+	}
+}

@@ -81,6 +81,7 @@ PACMAN_PKGS=(
     wget
     gum
     uv
+    pacman-contrib
 
     # Audio (PipeWire)
     pipewire

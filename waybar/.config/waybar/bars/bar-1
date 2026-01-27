@@ -6,9 +6,10 @@
 		"~/.config/waybar/modules/cpu",
 		"~/.config/waybar/modules/memory",
 		"~/.config/waybar/modules/temp",
-		"~/.config/waybar/modules/audio"
+		"~/.config/waybar/modules/audio",
+		"~/.config/waybar/modules/updates"
 	],
 	"modules-left": ["clock", "custom/weather"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["cpu","memory","custom/temp","pulseaudio"]
+	"modules-right": ["custom/updates", "cpu","memory","custom/temp","pulseaudio"]
 }
