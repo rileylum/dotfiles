@@ -22,7 +22,6 @@ nvim/.config/nvim/.luarc.json
 *~
 scripts/.local/bin/claude
 
-# System-generated desktop files (only track our custom ones)
-apps/.local/share/applications/*.desktop
-!apps/.local/share/applications/Discord.desktop
-!apps/.local/share/applications/GoogleDrive.desktop
+# Desktop files - track all (custom apps + hidden overrides)
+# System regenerates these in /usr/share/applications, not here
+apps/.local/share/applications/mimeinfo.cache
