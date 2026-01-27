@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Drive
+Exec=launch-webapp https://drive.google.com
+Terminal=false
+Type=Application
+Icon=/home/riley/.local/share/applications/icons/GoogleDrive.svg
+StartupNotify=true
+Categories=Network;FileTransfer;
