@@ -1,0 +1,9 @@
+{
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true
+  }
+}
