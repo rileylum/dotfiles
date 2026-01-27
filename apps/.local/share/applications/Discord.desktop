@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Name=Discord
-Exec=launch-webapp https://discord.com/channels/@me
+Exec=/home/riley/.local/bin/launch-webapp https://discord.com/channels/@me
 Terminal=false
 Type=Application
 Icon=/home/riley/.local/share/applications/icons/Discord.png
