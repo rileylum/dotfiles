@@ -53,6 +53,44 @@ source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #ALIAS
 alias vps='ssh ubuntu@139.99.61.129'
 
+# eza (modern ls)
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -la --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias tree='eza --tree --icons'
+
+# bat (modern cat)
+alias cat='bat --paging=never'
+alias catp='bat'  # with pager
+
+# lazygit
+alias lg='lazygit'
+
+# ripgrep
+alias rg='rg --smart-case'
+
+# btop
+alias top='btop'
+
+#TOOLS
+# zoxide (smart cd)
+eval "$(zoxide init zsh)"
+alias cd='z'
+
+# fzf
+source <(fzf --zsh)
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+# fzf catppuccin mocha theme
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
 export PATH='/home/riley/.config/nvm/versions/node/v22.16.0/bin':$PATH
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

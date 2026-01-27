@@ -21,3 +21,8 @@ nvim/.config/nvim/.luarc.json
 *.swp
 *~
 scripts/.local/bin/claude
+
+# System-generated desktop files (only track our custom ones)
+apps/.local/share/applications/*.desktop
+!apps/.local/share/applications/Discord.desktop
+!apps/.local/share/applications/GoogleDrive.desktop
