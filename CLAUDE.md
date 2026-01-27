@@ -39,3 +39,28 @@ Personal dotfiles for Arch Linux with Hyprland, managed with GNU Stow.
 2. Make executable: `chmod +x`
 3. Update `README.md` scripts table
 4. Commit changes
+
+## Gotchas
+
+### Partial stows
+- **apps/** - Entire `~/.local/share/applications` is symlinked. Contains both custom apps (Discord, GoogleDrive) and hidden override .desktop files. All tracked.
+- **claude/** - Only `settings.json` is stowed. Credentials/cache remain local.
+
+### Desktop files need absolute paths
+`.desktop` files don't inherit shell PATH. Use `/home/riley/.local/bin/script` not just `script`.
+
+### Waybar workspace icons
+The workspace icons are special Unicode chars (U+F111). Editing with normal tools corrupts them. Use `jq` to modify the JSON safely.
+
+### Font requirements
+- **Waybar weather**: Needs `otf-font-awesome` (v7), not `ttf-font-awesome-4`
+- **Walker icons**: Uses Material Design icons from Nerd Fonts (nf-md-*)
+
+### AUR packages
+walker, elephant-* and wezterm-git are AUR packages. Use `yay`, not `pacman`.
+
+### PATH in Hyprland
+Scripts called from keybinds need PATH set in `hyprland.conf`:
+```
+env = PATH,$HOME/.local/bin:$PATH
+```
