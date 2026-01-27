@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Refresh pacman mirrorlist sorted by speed
+
+echo "Sorting mirrors by speed (this may take a moment)..."
+sudo reflector \
+    --country Australia \
+    --age 12 \
+    --protocol https \
+    --sort rate \
+    --latest 10 \
+    --save /etc/pacman.d/mirrorlist
+
+echo "Mirrorlist updated."
