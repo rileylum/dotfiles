@@ -9,8 +9,11 @@ Personal dotfiles for Arch Linux with Hyprland. Managed with [GNU Stow](https://
 git clone <repo-url> ~/dotfiles
 cd ~/dotfiles
 
-# Install all packages
-stow hypr waybar walker mako wezterm nvim zsh scripts apps claude
+# Option 1: Full install (fresh Arch system)
+./install.sh
+
+# Option 2: Just stow configs (packages already installed)
+stow hypr waybar walker mako wezterm nvim zsh tmux scripts apps claude
 ```
 
 ## Packages
@@ -161,6 +164,24 @@ Z shell configuration.
 
 ```bash
 stow zsh
+```
+
+---
+
+### tmux
+Terminal multiplexer with vim-tmux-navigator integration.
+
+| File | Description |
+|------|-------------|
+| `.tmux.conf` | Main config with vim navigation, mouse support, Wayland clipboard |
+
+**Features:**
+- `Ctrl+h/j/k/l` - Navigate panes (works seamlessly with nvim splits)
+- Mouse support enabled
+- Vi copy mode with `wl-copy` integration
+
+```bash
+stow tmux
 ```
 
 ---
