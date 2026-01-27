@@ -1,0 +1,50 @@
+force_keyboard_focus = true
+selection_wrap = true
+theme = "catppuccin-mocha"
+additional_theme_location = "~/.config/walker/themes/"
+hide_action_hints = true
+
+[placeholders]
+"default" = { input = " Search...", list = "No Results" }
+
+[keybinds]
+quick_activate = []
+
+[columns]
+symbols = 1
+
+[providers]
+max_results = 256
+default = [
+  "desktopapplications",
+  "websearch",
+]
+
+# Prefix-based providers - type the prefix to switch modes
+[[providers.prefixes]]
+prefix = "/"
+provider = "providerlist"  # List all available providers
+
+[[providers.prefixes]]
+prefix = "."
+provider = "files"         # File browser
+
+[[providers.prefixes]]
+prefix = ":"
+provider = "symbols"       # Symbol picker
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"          # Calculator
+
+[[providers.prefixes]]
+prefix = "@"
+provider = "websearch"     # Web search
+
+[[providers.prefixes]]
+prefix = "$"
+provider = "clipboard"     # Clipboard history
+
+[[emergencies]]
+text = "Restart Walker"
+command = "restart-walker"

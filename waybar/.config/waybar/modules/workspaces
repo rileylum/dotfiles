@@ -1,0 +1,12 @@
+{
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
+    },
+    "tooltip": false,
+    "all-outputs": false
+  }
+}

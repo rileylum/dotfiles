@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Remove a web app by selecting from installed apps
+
+APP_DIR="$HOME/.local/share/applications"
+ICON_DIR="$APP_DIR/icons"
+
+# Find web apps (desktop files that use launch-webapp)
+WEBAPPS=$(grep -l "launch-webapp" "$APP_DIR"/*.desktop 2>/dev/null | xargs -I {} basename {} .desktop)
+
+if [[ -z "$WEBAPPS" ]]; then
+  echo "No web apps found."
+  exit 0
+fi
+
+# Let user select which app to remove
+SELECTED=$(echo "$WEBAPPS" | gum choose --header "Select web app to remove:")
+
+if [[ -z "$SELECTED" ]]; then
+  echo "No selection made."
+  exit 0
+fi
+
+# Confirm removal
+if gum confirm "Remove $SELECTED?"; then
+  rm -f "$APP_DIR/$SELECTED.desktop"
+  rm -f "$ICON_DIR/$SELECTED.png"
+  update-desktop-database "$APP_DIR" 2>/dev/null || true
+  echo "Removed $SELECTED"
+else
+  echo "Cancelled."
+fi

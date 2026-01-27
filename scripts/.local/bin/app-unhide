@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Unhide applications by removing override .desktop files
+
+APPS_DIR="$HOME/.local/share/applications"
+
+# Find locally hidden apps
+get_hidden_apps() {
+    find "$APPS_DIR" -name "*.desktop" 2>/dev/null | while read -r file; do
+        if grep -q "Hidden=true" "$file" 2>/dev/null; then
+            name=$(basename "$file")
+            # Try to get original app name from system file
+            for dir in /usr/share/applications /usr/local/share/applications; do
+                if [[ -f "$dir/$name" ]]; then
+                    app_name=$(grep "^Name=" "$dir/$name" 2>/dev/null | head -1 | cut -d= -f2)
+                    break
+                fi
+            done
+            echo "${app_name:-$name} ($name)"
+        fi
+    done | sort
+}
+
+hidden=$(get_hidden_apps)
+
+if [[ -z "$hidden" ]]; then
+    echo "No hidden apps found."
+    exit 0
+fi
+
+selected=$(echo "$hidden" | gum choose --no-limit --header "Select apps to unhide:")
+
+if [[ -z "$selected" ]]; then
+    echo "No apps selected."
+    exit 0
+fi
+
+echo "$selected" | while read -r line; do
+    file=$(echo "$line" | sed 's/.*(\(.*\))/\1/')
+    rm -f "$APPS_DIR/$file"
+    echo "Unhidden: $line"
+done
+
+echo ""
+echo "Done. Restart walker to see changes: restart-walker"

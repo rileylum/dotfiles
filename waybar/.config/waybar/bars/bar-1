@@ -1,0 +1,14 @@
+{
+	"include": [
+		"~/.config/waybar/modules/workspaces",
+		"~/.config/waybar/modules/clock",
+		"~/.config/waybar/modules/weather",
+		"~/.config/waybar/modules/cpu",
+		"~/.config/waybar/modules/memory",
+		"~/.config/waybar/modules/temp",
+		"~/.config/waybar/modules/audio"
+	],
+	"modules-left": ["clock", "custom/weather"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["cpu","memory","custom/temp","pulseaudio"]
+}

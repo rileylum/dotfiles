@@ -1,0 +1,16 @@
+{
+	"pulseaudio": {
+		"format": "<span>{icon}</span>{volume}% {format_source}",
+		"format-muted": "<span>󰖁 </span> {format_source} ",
+		"format-source": "<span></span>",
+		"format-source-muted": "<span></span>",
+		"format-icons": {
+			"default": [
+				"<span> </span>",
+				"<span> </span>",
+				"<span> </span>"
+			],
+		},
+		"tooltip": false
+	}
+}

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Hide applications from the launcher by creating override .desktop files
+
+APPS_DIR="$HOME/.local/share/applications"
+mkdir -p "$APPS_DIR"
+
+# Get all visible .desktop files from system and local
+get_visible_apps() {
+    find /usr/share/applications /usr/local/share/applications "$APPS_DIR" \
+        -name "*.desktop" 2>/dev/null | while read -r file; do
+        name=$(basename "$file")
+        # Skip if already hidden locally
+        if [[ -f "$APPS_DIR/$name" ]] && grep -q "Hidden=true" "$APPS_DIR/$name" 2>/dev/null; then
+            continue
+        fi
+        # Get the app name from the .desktop file
+        app_name=$(grep "^Name=" "$file" 2>/dev/null | head -1 | cut -d= -f2)
+        if [[ -n "$app_name" ]]; then
+            echo "$name|$app_name"
+        fi
+    done | sort -t'|' -k2 -u
+}
+
+# Select apps to hide using gum
+selected=$(get_visible_apps | while IFS='|' read -r file name; do
+    echo "$name ($file)"
+done | gum choose --no-limit --header "Select apps to hide (space to select, enter to confirm):")
+
+if [[ -z "$selected" ]]; then
+    echo "No apps selected."
+    exit 0
+fi
+
+# Create hidden overrides
+echo "$selected" | while read -r line; do
+    # Extract filename from "App Name (filename.desktop)"
+    file=$(echo "$line" | sed 's/.*(\(.*\))/\1/')
+    echo "[Desktop Entry]
+Hidden=true" > "$APPS_DIR/$file"
+    echo "Hidden: $line"
+done
+
+echo ""
+echo "Done. Restart walker to see changes: restart-walker"

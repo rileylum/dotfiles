@@ -1,0 +1,8 @@
+{
+	"custom/temp": {
+		"exec":  "sensors | awk '/^edge:/ {print $2}'",
+		"format": "<span></span> {}",
+		"interval": 30,
+		"tooltip": false
+	}
+}

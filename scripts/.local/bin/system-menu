@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Simple system menu using Walker in dmenu mode
+
+menu() {
+  echo -e "$1" | walker --dmenu --width 300 --minheight 1 --maxheight 200 -p "System" 2>/dev/null
+}
+
+case $(menu "󱅞  Lock\n󰜉  Restart\n󰐥  Shutdown") in
+*Lock*) hyprlock ;;
+*Restart*) systemctl reboot ;;
+*Shutdown*) systemctl poweroff ;;
+esac

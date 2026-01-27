@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Launch the passed URL as a web app in Chromium's app mode (chromeless window)
+
+if [[ -z "$1" ]]; then
+  echo "Usage: launch-webapp <url> [additional-flags...]"
+  exit 1
+fi
+
+exec setsid uwsm-app -- chromium --app="$1" "${@:2}"

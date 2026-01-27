@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Launch Walker application launcher, ensuring Elephant data provider is running first.
+
+# Start elephant if not already running
+if ! pgrep -x elephant > /dev/null; then
+  setsid uwsm-app -- elephant >/dev/null 2>&1 &
+  sleep 0.2  # Brief pause to let elephant initialize
+fi
+
+# Start walker service if not already running
+if ! pgrep -f "walker --gapplication-service" > /dev/null; then
+  setsid uwsm-app -- walker --gapplication-service >/dev/null 2>&1 &
+  sleep 0.1
+fi
+
+# Launch walker with reasonable dimensions
+exec walker --width 644 --maxheight 400 --minheight 300 "$@" >/dev/null 2>&1

@@ -1,0 +1,12 @@
+[
+	{
+		"include": "~/.config/waybar/bars/bar-1",
+		"layer": "top",
+		"output": "DP-1",
+	},
+	{
+		"include": "~/.config/waybar/bars/bar-2",
+		"layer": "top",
+		"output": "DP-2"
+	}
+]

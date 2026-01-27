@@ -1,0 +1,23 @@
+# Caches
+**/cache/
+**/.cache/
+**/Cache/
+
+# ZSH
+zsh/.config/zsh/.zhistory
+zsh/.config/zsh/.zcompdump*
+
+# Neovim
+nvim/.config/nvim/plugin/
+nvim/.config/nvim/.luarc.json
+
+# Secrets (if any)
+**/*.secret
+**/*.key
+**/credentials*
+
+# OS files
+.DS_Store
+*.swp
+*~
+scripts/.local/bin/claude
