@@ -3,7 +3,25 @@
 # Check for pacman updates
 # Returns JSON for waybar with class for styling
 
-updates=$(checkupdates 2>/dev/null)
+# Retry logic for startup (network may not be ready)
+max_retries=3
+retry_delay=5
+
+for ((i=1; i<=max_retries; i++)); do
+    updates=$(checkupdates 2>/dev/null)
+    exit_code=$?
+
+    # checkupdates returns 0 on success, 1 if no updates, 2 on error
+    if [[ $exit_code -le 1 ]]; then
+        break
+    fi
+
+    # Only retry if this isn't the last attempt
+    if [[ $i -lt $max_retries ]]; then
+        sleep $retry_delay
+    fi
+done
+
 count=$(echo "$updates" | grep -c '^' 2>/dev/null || echo 0)
 
 # If no updates, output nothing (module will be hidden)
