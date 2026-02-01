@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 ## Project Purpose
 
 Personal dotfiles for Arch Linux with Hyprland, managed with GNU Stow.
@@ -18,6 +20,29 @@ Personal dotfiles for Arch Linux with Hyprland, managed with GNU Stow.
 - **apps/** - Desktop entries and hidden app overrides
 - **claude/** - Claude Code settings
 - **install.sh** - Full system setup script
+
+## Commands
+
+```bash
+# Stow a package (create symlinks)
+cd ~/dotfiles && stow <package>
+
+# Unstow a package (remove symlinks)
+cd ~/dotfiles && stow -D <package>
+
+# Full system install (fresh Arch)
+./install.sh
+
+# System maintenance
+system-update    # Refresh mirrors + update all packages
+refresh-mirrors  # Sort pacman mirrors by speed (Australia)
+
+# Reload after config changes
+hyprctl reload                      # Hyprland config
+killall waybar && waybar &          # Waybar
+makoctl reload                      # Mako notifications
+restart-walker                      # Walker launcher
+```
 
 ## When Making Changes
 
