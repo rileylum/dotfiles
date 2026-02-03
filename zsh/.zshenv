@@ -1,6 +1,9 @@
 # path
 export PATH="$HOME/.local/bin:$PATH"
 
+# Node (for non-interactive shells like nvim plugin builds)
+export PATH="$HOME/.config/nvm/versions/node/v22.16.0/bin:$PATH"
+
 # XDG
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$XDG_CONFIG_HOME/local/share
